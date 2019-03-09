@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="capslock.css">
+        <script src="CapsLock_Indicator.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form>
+            Password:<br>
+            <input type="text" name="password" id="txtPassword"><br>
+        </form>
+        <script>
+            $(document).ready(function() {
+                var caps_element = document.getElementById('txtPassword');
+                var caps = new CapsLock_Indicator(caps_element, 'capsLockOn', 'capsLockOff');
+                $('input#txtPassword').bind('keypress', function(event) {
+                    caps.checkForCapsLock(event);
+                });
+                $('input#txtPassword').blur(function() {
+                    caps.lostFocus();
+                });
+            });
+        </script>
+    </body>
+</html>
